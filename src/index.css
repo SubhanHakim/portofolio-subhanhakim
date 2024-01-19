@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root{
+    --foreground: 240 10% 3.9%;
+  }
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+
+.open {
+  right: 0;
+}
+
+.animation-underline {
+  position: relative;
+  color: #67686A;
+  text-decoration: none;
+}
+
+.animation-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: -10px;
+  border-radius: 3px;
+  left: 0;
+  background-color: #67686A;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  transform: scaleX(0);
+}
+
+.animation-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.box {
+  width: 250px;
+  height: 250px;
+  /* border: 5px solid red; */
+}
+
+.box img {
+  border-radius: 16px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.box img:hover {
+  filter: grayscale(0);
+}
+
+.position-ellipse {
+  position: absolute;
+  top: 0;
+  left: -500px;
+}
+.position-ellipse2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 30%;
+  background: #577DE0;
+  box-shadow: 350px 350px 350px;
+  border-radius: 9999px;
+  filter: blur(330px);
+
+}
+
+.position-ellipse1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  height: 30%;
+  background: #577DE0;
+  box-shadow: 350px 350px 350px;
+  border-radius: 9999px;
+  filter: blur(330px);
+
+}
+
+
+@keyframes globeBounce {
+  0% {
+    transform: translate(-50%, -40%);
+  }
+  50% {
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    transform: translate(-50%, -40%);
+  }
+}
+
+.globe {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 3em;
+  height: 3em;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+@keyframes globe {
+  0% {
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+}
+
+.globe-wrap {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(30deg);
+  animation: globe 5.4s cubic-bezier(0.35, 0, 0.65, 1) infinite;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 0.125em hsl(var(--foreground));
+}
+
+.globe .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: inset 0.1em 0px 0px 0.08em hsl(var(--foreground));
+  animation: circle1 2.7s linear infinite;
+  font-size: 0.75em;
+}
+
+@keyframes circle1 {
+  0% {
+    border-radius: 50%;
+    box-shadow: inset 0.1em 0px 0px 0.08em hsl(var(--foreground));
+    width: 100%;
+  }
+  49% {
+    border-radius: 50%;
+    box-shadow: inset 0.1em 0px 0px 0.08em hsl(var(--foreground));
+    background: transparent;
+  }
+  50% {
+    border-radius: 0%;
+    width: 0.175em;
+    background: hsl(var(--foreground));
+  }
+  51% {
+    border-radius: 50%;
+    box-shadow: inset -0.1em 0px 0px 0.08em hsl(var(--foreground));
+    background: transparent;
+  }
+  100% {
+    border-radius: 50%;
+    box-shadow: inset -0.1em 0px 0px 0.08em hsl(var(--foreground));
+    width: 100%;
+  }
+}
+
+.globe :nth-child(1) {
+  animation-delay: -1.8s;
+}
+
+.globe :nth-child(2) {
+  animation-delay: -0.9s;
+}
+
+.globe .circle-hor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  height: 55%;
+  box-shadow: inset 0px 0px 0px 0.15em hsl(var(--foreground));
+  font-size: 0.75em;
+}
+
+.globe .circle-hor-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  transform: translate(-50%, -50%);
+  border-radius: 0%;
+  height: 0.15em;
+  background: hsl(var(--foreground));
+  font-size: 0.75em;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  /* margin-bottom: 100vh; */
+  overflow-x: hidden;
+}
+
+
+.sliderContainer {
+  position: absolute;
+  /* top: calc(100vh - 300px); */
+  
+}
+
+.slider {
+  position: relative;
+  white-space: nowrap;
+}
+
+.slider p {
+  position: relative;
+  margin: 0;
+  color: white;
+  font-size: 200px;
+  font-weight: 500;
+  /* padding-right: 50px; */
+}
+
+.slider p:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+.divider {
+  height: 900px;
+  width: 4px;
+  background: #67686A;
+}
+
+.circle-divider {
+  width: 50px;
+  height: 50px;
+  background: #577DE0;
+  border-radius: 100%;
+  position: absolute;
+  left: -22px;
+}
+
+.circle-postion {
+  top: 300;
+}
